@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  width: 100vw; height: 100vh;
+  margin: 0;
+}
+
+main {
+  margin-top: 6rem;
+}
