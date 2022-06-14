@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { React ,useState } from "react";
 import "./Todo.css";
 import icon_moon from "./../icon-moon.svg";
 import icon_sun from "./../icon-sun.svg";
@@ -47,7 +46,6 @@ const TodoUi = (props) => {
 
   const onLeft = (e) => {
     if (e.target.value.length === 0) {
-      console.log("Error");
     } else {
       SetData([
         { value: Value, state: "Active", id: Math.random().toString() },
@@ -56,6 +54,13 @@ const TodoUi = (props) => {
     }
     setValue("");
   };
+
+
+  const update_Data = (e) => {
+    SetData(e)
+  }
+
+
   const onDelete = (AllState) => {
     for (const i in Data) {
       if (Data[i].id === AllState) {
@@ -68,14 +73,16 @@ const TodoUi = (props) => {
     console.log(test);
     SetData(test);
   };
+
   const onCheckState = (AllState) => {
     for (const i in Data) {
       if (Data[i].id === AllState) {
         Data[i].state = "Complete";
       }
     }
-    SetData(Data);
+    SetData(Data)
   };
+
   const onClearComplete = () => {
     SetData(
       Data.filter((el) => {
@@ -83,6 +90,7 @@ const TodoUi = (props) => {
       })
     );
   };
+  
   return (
     <div className="continer">
       <div className="continerUser">
@@ -106,6 +114,7 @@ const TodoUi = (props) => {
           onClearComplete={onClearComplete}
           value={Value}
           onDelete={onDelete}
+          onUpdate={update_Data}
         />
       </div>
     </div>

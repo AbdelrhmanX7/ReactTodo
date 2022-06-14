@@ -48,10 +48,7 @@ const TodoResults = (props) => {
   )
   const opacity = isDragging ? 0 : 1
 
-
-
   const FindIndex = () => {
-    console.log('test')
     props.checkState(props.id);
     props.CheckLen();
   };

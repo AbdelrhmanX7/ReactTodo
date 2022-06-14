@@ -1,3 +1,4 @@
+import React from 'react';
 import update from "immutability-helper";
 import { useCallback, useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
@@ -34,8 +35,24 @@ const TodoList = (props) => {
     },
     [findCard, cards, setCards],
   )
-  const [, drop] = useDrop(() => ({ accept: ItemType.CARD }))
 
+  useEffect(() => {
+    props.onUpdate(cards)
+  }, [cards])
+
+  useEffect(() => {
+    const str = localStorage.getItem('test')
+    const parseObj = JSON.parse(str)
+    props.onUpdate(parseObj)
+    setCards(parseObj)
+  }, [])
+
+  useEffect(() => {
+    const jsonObj = JSON.stringify(props.Data)
+    localStorage.setItem('test', jsonObj)
+  }, [props.Data])
+
+  const [, drop] = useDrop(() => ({ accept: ItemType.CARD }))
   const btns = document.getElementsByClassName("Checked-btns");
   const [checkState, setCheckState] = useState("All");
   const [Datalen, setDataLen] = useState(0);
@@ -46,7 +63,7 @@ const TodoList = (props) => {
     setDataLen(GetLen.length);
   };
 
-  const onAll = (e) => {
+  const onAll = () => {
     for (let i = 0; i < btns.length; i++) {
       btns[i].style.color = "hsl(236, 9%, 61%)";
     }

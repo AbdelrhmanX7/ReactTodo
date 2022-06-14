@@ -2,14 +2,19 @@
   "name": "react-the-complete-guide",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://abdelrhmanx7.github.io/ReactTodo/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
+    "gh-pages": "^3.2.3",
     "immutability-helper": "^3.1.1",
+    "rdndmb-html5-to-touch": "^7.0.0-alpha.1",
     "react": "^18.0.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
+    "react-dnd-touch-backend": "^16.0.1",
+    "react-dnd-multi-backend": "^7.0.0-alpha.4",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.1",
     "react-sortable-dnd-list": "^1.0.1"
@@ -18,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
