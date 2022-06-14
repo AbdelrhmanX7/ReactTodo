@@ -1,3 +1,3 @@
 export const ItemType = {
-    CARD: 'card'
+    CARD: 'card',
 } 

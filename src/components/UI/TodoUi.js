@@ -4,6 +4,7 @@ import icon_moon from "./../icon-moon.svg";
 import icon_sun from "./../icon-sun.svg";
 import TodoList from "../TodoList/TodoList";
 const TodoUi = (props) => {
+  const todo_input = document.getElementById('todo_input')
   const Check_Border = document.getElementsByClassName('Checked-Border')
   const [Light, setLight] = useState(true);
   const Dark_Light = () => {
@@ -30,6 +31,8 @@ const TodoUi = (props) => {
 
   const [Data, SetData] = useState([]);
   const [Value, setValue] = useState("");
+
+  
   const onSave = (e) => {
     if (Light) {
       for(let i = 0; i <Check_Border.length; i++) {
@@ -44,28 +47,25 @@ const TodoUi = (props) => {
     setValue(e.target.value);
   };
 
-  const onLeft = (e) => {
-    if (e.target.value.length !== 0) {
+
+  const Submit_New_Todo = (e) => {
+    e.preventDefault()
+    Focus(todo_input)
+  }
+
+  const Focus = (e) => {
+    if (e.value.length !== 0) {
       SetData([
         { value: Value, state: "Active", id: Math.random().toString() },
         ...Data,
       ]);
       setValue("");
     }
-  };
-
-  const Focus = (e) => {
-    e.target.addEventListener("keypress", function(event) {
-      if(event.keyCode === 13 && e.target.value.length !== 0) {
-        e.target.blur()
-      }
-    })
   }
 
   const update_Data = (e) => {
     SetData(e)
   }
-
 
   const onDelete = (AllState) => {
     for (const i in Data) {
@@ -73,11 +73,13 @@ const TodoUi = (props) => {
         Data[i].state = "Delete";
       }
     }
-    const test = Data.filter((el) => {
+
+
+    const Delete_Filter = Data.filter((el) => {
       return el.state !== "Delete";
     });
-    console.log(test);
-    SetData(test);
+    console.log(Delete_Filter);
+    SetData(Delete_Filter);
   };
 
   const onCheckState = (AllState) => {
@@ -96,9 +98,8 @@ const TodoUi = (props) => {
       })
     );
   };
-  
   return (
-    <div className="continer">
+    <form onSubmit={Submit_New_Todo} className="continer">
       <div className="continerUser">
         <div className="Themes">
           <h1>TODO</h1>
@@ -106,25 +107,23 @@ const TodoUi = (props) => {
         </div>
         <div className="UserInput">
           <input
+            id="todo_input"
             type="text"
             onChange={onSave}
             value={Value}
-            onBlur={onLeft}
-            onFocus={Focus}
             placeholder="Create a new todo..."
           />
         </div>
         <TodoList
           Data={Data}
-          onCheckState={onCheckState}
-          onLeft={onLeft}
           onClearComplete={onClearComplete}
+          onCheckState={onCheckState}
           value={Value}
           onDelete={onDelete}
           onUpdate={update_Data}
         />
       </div>
-    </div>
+    </form>
   );
 };
 

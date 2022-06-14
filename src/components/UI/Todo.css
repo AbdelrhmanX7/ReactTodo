@@ -247,3 +247,7 @@ button {
 .Checked-Border-Night {
   background-color: hsl(235, 24%, 19%);
 }
+.Handle_Errors {
+  position: absolute;
+  display: none;
+}

@@ -15,6 +15,7 @@ const TodoResults = (props) => {
   const findCard = props.findCard
   const moveCard = props.moveCard
   const originalIndex = props.findCard(id).index
+  
   const [{ isDragging }, drag] = useDrag(
     () => ({
       type: ItemType.CARD,
@@ -33,7 +34,6 @@ const TodoResults = (props) => {
     [id, originalIndex, moveCard],
   )
 
-
   const [, drop] = useDrop(
     () => ({
       accept: ItemType.CARD,
@@ -48,17 +48,24 @@ const TodoResults = (props) => {
   )
   const opacity = isDragging ? 0 : 1
 
-  const FindIndex = () => {
+
+  const Complete_Task = () => {
     props.checkState(props.id);
     props.CheckLen();
   };
+
+
   const onDelete = () => {
     props.Delete(props.id)
+  }
+  const Handle_Error = () => {
+
   }
   return (
     <li ref={(node) => drag(drop(node))} style={{...style, opacity }}>
       <div className="list-check">
-        <button className={`Checked Checked-${props.state}`} onClick={FindIndex}>
+        <button className="Handle_Errors" onClick={Handle_Error}></button>
+        <button className={`Checked Checked-${props.state}`} onClick={Complete_Task}>
           <img src={icon_check} alt="" />
           <div className={`Checked-Border`}></div>
         </button>
