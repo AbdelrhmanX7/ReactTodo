@@ -45,16 +45,22 @@ const TodoUi = (props) => {
   };
 
   const onLeft = (e) => {
-    if (e.target.value.length === 0) {
-    } else {
+    if (e.target.value.length !== 0) {
       SetData([
         { value: Value, state: "Active", id: Math.random().toString() },
         ...Data,
       ]);
+      setValue("");
     }
-    setValue("");
   };
 
+  const Focus = (e) => {
+    e.target.addEventListener("keypress", function(event) {
+      if(event.keyCode === 13 && e.target.value.length !== 0) {
+        e.target.blur()
+      }
+    })
+  }
 
   const update_Data = (e) => {
     SetData(e)
@@ -104,6 +110,7 @@ const TodoUi = (props) => {
             onChange={onSave}
             value={Value}
             onBlur={onLeft}
+            onFocus={Focus}
             placeholder="Create a new todo..."
           />
         </div>

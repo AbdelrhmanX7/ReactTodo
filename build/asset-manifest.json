@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactTodo/static/css/main.763d9f02.css",
-    "main.js": "/ReactTodo/static/js/main.8616ecf7.js",
+    "main.js": "/ReactTodo/static/js/main.a3e7f2b4.js",
     "static/media/bg-desktop-light.jpg": "/ReactTodo/static/media/bg-desktop-light.3508d620efd5a52bb4ce.jpg",
     "static/media/bg-desktop-dark.jpg": "/ReactTodo/static/media/bg-desktop-dark.73e47dbb723ebc772ef0.jpg",
     "index.html": "/ReactTodo/index.html",
@@ -10,10 +10,10 @@
     "static/media/icon-cross.svg": "/ReactTodo/static/media/icon-cross.6ee81d30b75cab19d6f7314624fcc4d6.svg",
     "static/media/icon-check.svg": "/ReactTodo/static/media/icon-check.a8fb15d0278c8e312df5fc8364fef863.svg",
     "main.763d9f02.css.map": "/ReactTodo/static/css/main.763d9f02.css.map",
-    "main.8616ecf7.js.map": "/ReactTodo/static/js/main.8616ecf7.js.map"
+    "main.a3e7f2b4.js.map": "/ReactTodo/static/js/main.a3e7f2b4.js.map"
   },
   "entrypoints": [
     "static/css/main.763d9f02.css",
-    "static/js/main.8616ecf7.js"
+    "static/js/main.a3e7f2b4.js"
   ]
 }
